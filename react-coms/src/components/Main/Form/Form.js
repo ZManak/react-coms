@@ -23,6 +23,8 @@ class Form extends Component {
     getForm(this.name.current.value, this.email.current.value, this.age.current.value, this.photoUrl.current.value);// enviar nombre por contexto
     alert("Data sent");
 
+    this.props.setStateOfParent(this.name.current.value, this.email.current.value, this.age.current.value, this.photoUrl.current.value)
+
     // Vaciar input + state
     this.name.current.value = "";
     this.email.current.value = "";
@@ -30,10 +32,18 @@ class Form extends Component {
     this.photoUrl.current.value = "";
   }
 
+  handle = () => {
+    this.props.setStateOfParent(this.name.current.value, this.email.current.value, this.age.current.value, this.photoUrl.current.value)
+  }
+
+  erase =() => {
+    this.props.setStateOfParent("", "", "", "")
+  }
+
   render() {
     return <div>
-      <h1>User Form</h1>
-      <p>Name </p>
+      <h2>User Form</h2>
+      <p>Name</p>
       <input type="text" ref={this.name} />
       <br />
       <p>Email </p>
@@ -45,8 +55,9 @@ class Form extends Component {
       <p>Photo URL </p>
       <input type="text" ref={this.photoUrl} />
       <br />
-      <br />
-      <input type="button" onClick={this.sendInfo} value="Send" /></div>;
+      <input type="button" onClick={this.sendInfo} value="Send" />
+      <input type="button" onClick={this.erase} value="LogOut" />
+      </div>;
   }
 }
 

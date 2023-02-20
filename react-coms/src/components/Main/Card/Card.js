@@ -1,23 +1,22 @@
 import React, { Component } from "react";
-import { userContext } from "../../../context/userContext";
 
 class Card extends Component {
 
-  static contextType = userContext;
-
   constructor(props) {
     super(props)
-
-    const {user} = this.context
-    this.state = {
-      user
     }
-    console.log(user)
-  }
 
-  render() {
-    return <div>
-      <p>Name:</p>
+
+    render() {
+      return <div>
+        <h3>Name:</h3>
+        <p>{this.props.data.name}</p>
+        <h3>Correo:</h3>
+        <p>{this.props.data.email}</p>
+        <h3>Age</h3>
+        <p>{this.props.data.age}</p>
+        <h3>Photo</h3>
+        <img src={this.props.data.photoUrl} alt={this.props.data.name} />
     </div>;
   }
 }
